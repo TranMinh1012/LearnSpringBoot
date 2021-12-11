@@ -7,6 +7,13 @@
    http://www.liquibase.org/xml/ns/dbchangelog
    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
-<!--    <include file="changelog/20211117-2240-user-infor-table.xml" relativeToChangelogFile="true"/>-->
-    <include file="changelog/20211124-2030-user-table.xml" relativeToChangelogFile="true"/>
+    <changeSet id="2021124-2030-001" author="MinhTT">
+        <createTable tableName="users_info">
+            <column name="user_id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_user-info_id"/>
+            </column>
+            <column name="user_name" type="varchar(32)"/>
+            <column name="user_age" type="integer"/>
+        </createTable>
+    </changeSet>
 </databaseChangeLog>
