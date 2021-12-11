@@ -5,8 +5,10 @@ import org.aibles.userservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 
 
 @RestController
@@ -23,13 +25,13 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<?> createUser(@RequestBody User user){
+    public ResponseEntity<?> createUser(@Valid @RequestBody User user){
         User userCreated = userService.createUser(user);
         return new ResponseEntity<>(userCreated, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateUser(@PathVariable("id") int id, @RequestBody User user){
+    public ResponseEntity<?> updateUser(@PathVariable("id") int id, @Valid @RequestBody User user){
         userService.updateUser(id, user);
         return new ResponseEntity<>("Update user successfully", HttpStatus.OK);
     }

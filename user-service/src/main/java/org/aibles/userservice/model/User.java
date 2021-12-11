@@ -1,6 +1,9 @@
 package org.aibles.userservice.model;
 
+
+
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -12,9 +15,13 @@ public class User implements Serializable {
     @Column(name = "user_id")
     private int id;
 
+    @NotBlank(message = "Name must not be blank")
+    @Size(min = 1, max =30, message = "Name must have at least 1 characters")
     @Column(name = "user_name")
     private String name;
 
+    @NotBlank(message = "Age must not be blank")
+    @Min(value = 15, message = "Age must be more than 15")
     @Column(name = "user_age")
     private int age;
 
