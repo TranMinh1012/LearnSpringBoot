@@ -8,5 +8,5 @@ public interface UserService {
     User createUser(User user);
     User getUser(int id);
     void deleteUser(int id);
-    User updateUser(int id);
+    User updateUser(int id, User user);
 }

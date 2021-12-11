@@ -28,11 +28,11 @@ public class UserController {
         return new ResponseEntity<>(userCreated, HttpStatus.CREATED);
     }
 
-//    @PutMapping("/{id}")
-//    public ResponseEntity<?> updateUser(@PathVariable("id") int id, @RequestBody User user){
-//        userService.updateUser(id);
-//        return new ResponseEntity<>("Update user successfully", HttpStatus.OK);
-//    }
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateUser(@PathVariable("id") int id, @RequestBody User user){
+        userService.updateUser(id, user);
+        return new ResponseEntity<>("Update user successfully", HttpStatus.OK);
+    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteUser(@PathVariable("id") int id){

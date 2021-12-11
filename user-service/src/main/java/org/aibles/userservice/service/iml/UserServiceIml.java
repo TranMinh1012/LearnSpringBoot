@@ -51,8 +51,17 @@ public class UserServiceIml implements UserService {
     }
 
     @Override
-    public User updateUser(int id) throws UserNotFound{
-        return null;
+    public User updateUser(int id, User user) throws UserNotFound{
+        User userUpdated = userRepository.findById(id).orElse(null);
+        if(userUpdated == null){
+            throw new UserNotFound();
+        }
+        else {
+            userUpdated.setName(user.getName());
+            userUpdated.setAge(user.getAge());
+            userRepository.save(userUpdated);
+            return userUpdated;
+        }
     }
 
 
