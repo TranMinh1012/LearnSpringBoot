@@ -1,14 +1,14 @@
 package org.aibles.userservice.controller;
 
+
 import org.aibles.userservice.model.User;
 import org.aibles.userservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
+import java.util.List;
 
 
 @RestController
@@ -40,5 +40,11 @@ public class UserController {
     public ResponseEntity<?> deleteUser(@PathVariable("id") int id){
         userService.deleteUser(id);
         return new ResponseEntity<>("Delete user successfully", HttpStatus.OK);
+    }
+
+    @GetMapping()
+    public ResponseEntity<?> getAllUsers() {
+        List<User> userList = userService.getAllUsers();
+        return new ResponseEntity<>(userList, HttpStatus.OK);
     }
 }
